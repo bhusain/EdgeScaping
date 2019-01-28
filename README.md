@@ -1,5 +1,7 @@
 # EdgeScaping
 
+![GitHub Logo](workflow.png)
+
 This file details the different codes that we utlized to create the results for EdgeScaping.
 
 The requirements include:
