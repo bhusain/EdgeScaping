@@ -25,31 +25,27 @@ print(len(list(data.index)))
 global_max = data.max().max()
 global_min = data.min().min()
 
-bins = round(global_max)
 data = data.fillna(0)
 
+bins = int(round(global_max))
 print(bins)
 
-tdata = []
-
-total_data = np.zeros(20 * 20)
-
-
-for n in range(0,10):
-    i = randint(0, 70000)
-    j = randint(0, 70000)
-    if n%1000 == 0:
-        print(n)
-    if data.ix[:,i].max() > 0:
-        if data.ix[:,j].max() > 0:
-            k = np.zeros(20 * 20)
-            for l,m in zip(data.ix[:,i],data.ix[:,j]) :
-                if l > 3 and m > 3:
-                    ind = (round(l) * 20) + round(m)
-                    k[ind] = k[ind] + 1
-            tdata.append(k)
-            total_data = total_data + k
-
-np.savetxt('test_prune.out', tdata, delimiter='\t')
-
-np.savetxt('test_total_prune.out', total_data, delimiter='\t')
+count = 0
+for i in range(0, len(data)):
+    gene1 = list(data.iloc[int(i)].values)
+    only_pos_1 = [num for num in gene1 if num > 0]
+    if len(only_pos_1) > 0:
+        for j in range(i + 1, len(data)):
+            gene2 = list(data.iloc[int(j)].values)
+            only_pos_2 = [num for num in gene2 if num > 0]
+            if len(only_pos_2) > 0:
+                k = np.zeros(bins * bins)
+                for l,m in zip(gene1,gene2):
+                    if l > 0 and m > 0:
+                        ind = int((round(l) * bins) + round(m))
+                        #print(ind)
+                        k[ind] = k[ind] + 1
+                test = np.reshape(k, (10,10))
+                plt.imshow(test)
+                plt.show()
+                print(i, j)
