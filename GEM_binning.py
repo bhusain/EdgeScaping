@@ -26,8 +26,7 @@ global_max = data.max().max()
 global_min = data.min().min()
 
 data = data.fillna(0)
-
-bins = int(round(global_max))
+bins = int(math.ceil(global_max))
 print(bins)
 
 count = 0
@@ -42,7 +41,7 @@ for i in range(0, len(data)):
                 k = np.zeros(bins * bins)
                 for l,m in zip(gene1,gene2):
                     if l > 0 and m > 0:
-                        ind = int((round(l) * bins) + round(m))
+                        ind = int((math.floor(l) * bins) + math.floor(m))
                         #print(ind)
                         k[ind] = k[ind] + 1
                 k = np.interp(k, (k.min(), k.max()), (0, +1))
