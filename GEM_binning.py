@@ -8,20 +8,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import math
 from random import randint
-data = pd.read_csv('Hsapiens-9606-201603-2016-RNASeq-Quantile-CancerGenomeAtlas-v1.GEM.txt',sep='\t')
 
-#data = data[data.columns.values[:-1]]
-data = data.transpose()
-
-
-
-global_max = data.max().max()
-global_min = data.min().min()
-
-print(global_max)
-print(global_min)
-
-print(data.shape)
 
 import numpy as np
 import json
