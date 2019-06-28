@@ -45,7 +45,7 @@ for i in range(0, len(data)):
                         ind = int((round(l) * bins) + round(m))
                         #print(ind)
                         k[ind] = k[ind] + 1
-                test = np.reshape(k, (10,10))
+                test = np.reshape(k, (bins,bins))
                 plt.imshow(test)
                 plt.show()
                 print(i, j)
