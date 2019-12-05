@@ -48,4 +48,4 @@ for i in range(0, len(data)):
                 test = np.reshape(k, (bins,bins))
                 plt.imshow(test)
                 plt.show()
-                print(i, j)
+                print(k)
