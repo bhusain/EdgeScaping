@@ -48,4 +48,5 @@ for i in range(0, len(data)):
                 test = np.reshape(k, (bins,bins))
                 plt.imshow(test)
                 plt.show()
-                print(k)
+                # Gene_name1, Gene_name2, Data_array
+                print(data.index[i], data.index[j], k)
